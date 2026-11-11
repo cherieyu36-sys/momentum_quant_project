@@ -1,6 +1,6 @@
 # Momentum Quant
 
-[![CI](https://github.com/<your-username>/momentum-quant/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/momentum-quant/actions/workflows/ci.yml)
+[![CI](https://github.com/cherieyu36-sys/momentum_quant_project/actions/workflows/ci.yml/badge.svg)](https://github.com/cherieyu36-sys/momentum_quant_project/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -41,7 +41,7 @@ momentum-quant/
 ## Quick Start
 
 ```bash
-git clone https://github.com/<your-username>/momentum-quant.git
+git clone https://github.com/cherieyu36-sys/momentum_quant_project.git
 cd momentum-quant
 
 python -m venv .venv
