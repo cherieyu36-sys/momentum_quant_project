@@ -6,7 +6,7 @@
 
 A clean, reproducible, **look-ahead-free** momentum strategy backtesting framework. It implements the three most widely studied momentum strategies in quantitative finance: cross-sectional momentum, time-series momentum (trend following), and dual momentum. It also includes a daily backtesting engine, performance analytics, parameter sweeps, and a full unit test suite.
 
-## ✨ Features
+## Features
 
 - **Three momentum strategies**: Cross-Sectional, Time-Series, and Dual Momentum
 - **Rigorous backtesting engine**: signals at day t's close, returns from t+1; weights drift naturally with prices between rebalances; transaction costs charged on turnover
@@ -16,7 +16,7 @@ A clean, reproducible, **look-ahead-free** momentum strategy backtesting framewo
 - **Multiple data sources**: Yahoo Finance (with local caching), local CSV, synthetic data (runs offline)
 - **Engineering**: YAML configs, CLI, pytest suite (including a look-ahead bias test), GitHub Actions CI
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 momentum-quant/
@@ -38,7 +38,7 @@ momentum-quant/
 └── pyproject.toml
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/<your-username>/momentum-quant.git
@@ -71,7 +71,7 @@ Each run writes the following to `reports/<strategy>_<source>/`:
 | `weights.png` | Holdings over time |
 | `config.yaml` | Full snapshot of the config used (for reproducibility) |
 
-## 🧠 Strategies
+## Strategies
 
 All strategies share the same momentum signal:
 
@@ -88,7 +88,7 @@ Each asset is compared only with **its own past**: long if momentum is positive,
 ### 3. Dual Momentum (`dual`)
 Combines the two: first pick the top `top_n` by relative momentum, then require positive absolute momentum. Each slot gets `1/top_n` of capital; unfilled slots go to `safe_asset` (e.g. intermediate Treasuries, IEF), or to cash if none is set.
 
-## ⚙️ Backtest Engine Design
+## Backtest Engine Design
 
 These are the most common sources of error in momentum backtests, and each one is handled explicitly:
 
@@ -98,7 +98,7 @@ These are the most common sources of error in momentum backtests, and each one i
 4. **Data cleaning**: only limited forward-filling; never back-filling, which would leak future prices into the past.
 5. **Warm-up trimming**: statistics start at the first rebalance with an actual position, so zero returns during the signal warm-up don't dilute the metrics.
 
-## 🔧 Configuration
+## Configuration
 
 | Parameter | Description | Default |
 |---|---|---|
@@ -119,14 +119,14 @@ These are the most common sources of error in momentum backtests, and each one i
 | `backtest.cost_bps` | Transaction cost (basis points) | `10` |
 | `backtest.benchmark` | `equal_weight` / a ticker / `null` | `equal_weight` |
 
-## 🧪 Testing
+## Testing
 
 ```bash
 pytest -q        # unit + end-to-end tests (synthetic data, no network needed)
 ruff check .     # linting
 ```
 
-## ⚠️ Known Limitations
+## Known Limitations
 
 - **Survivorship bias**: the universe consists of ETFs that still exist today, so backtests are inherently optimistic.
 - **Zero cash return**: no interest on cash and no borrow cost for shorts.
@@ -134,7 +134,7 @@ ruff check .     # linting
 - **Data quality**: Yahoo Finance is an unofficial source; use a paid data vendor for serious research.
 - **Synthetic data is for demos only**: synthetic prices have built-in trend persistence, so strategy performance on them says **nothing** about real markets.
 
-## 🛣️ Possible Extensions
+## Possible Extensions
 
 - Portfolio-level volatility targeting
 - Momentum crash protection (Daniel & Moskowitz, 2016)
@@ -142,7 +142,7 @@ ruff check .     # linting
 - Single-stock cross-sectional momentum (requires handling delistings and survivorship bias)
 - Cash yield, borrow costs, and slippage models
 
-## 📚 References
+## References
 
 - Jegadeesh, N., & Titman, S. (1993). *Returns to Buying Winners and Selling Losers.* Journal of Finance.
 - Moskowitz, T., Ooi, Y. H., & Pedersen, L. H. (2012). *Time Series Momentum.* Journal of Financial Economics.
@@ -150,10 +150,10 @@ ruff check .     # linting
 - Antonacci, G. (2014). *Dual Momentum Investing.* McGraw-Hill.
 - Daniel, K., & Moskowitz, T. (2016). *Momentum Crashes.* Journal of Financial Economics.
 
-## ⚖️ Disclaimer
+## Disclaimer
 
 This project is for educational and research purposes only and does not constitute investment advice. Past backtest results do not guarantee future performance. Any live trading based on this code is entirely at your own risk.
 
-## 📄 License
+## License
 
 [MIT](LICENSE)
