@@ -71,6 +71,12 @@ Each run writes the following to `reports/<strategy>_<source>/`:
 | `weights.png` | Holdings over time |
 | `config.yaml` | Full snapshot of the config used (for reproducibility) |
 
+## Results
+
+![Dual momentum](docs/dual_performance.png)
+![Time-series momentum](docs/time_series_performance.png)
+![Cross-sectional momentum](docs/cross_sectional_performance.png)
+
 ## Strategies
 
 All strategies share the same momentum signal:
