@@ -1,0 +1,24 @@
+# Time-series momentum (trend following), inverse-volatility weighted (Moskowitz, Ooi & Pedersen 2012 style)
+data:
+  tickers: [SPY, EFA, EEM, TLT, IEF, GLD, DBC, VNQ]
+  start: "2007-01-01"
+  end: "2024-12-31"
+  source: yahoo
+  cache_dir: data
+
+strategy:
+  name: time_series
+  lookback: 252
+  skip: 0
+  rebalance: M
+  long_short: false      # true = go short on negative momentum
+  weighting: inverse_vol
+  vol_window: 63
+  target_vol: 0.15       # per-asset target annualized vol (portfolio leverage capped by max_leverage)
+  max_leverage: 1.0
+
+backtest:
+  cost_bps: 10
+  benchmark: equal_weight
+
+output_dir: reports

@@ -1,0 +1,23 @@
+# Cross-sectional momentum: US sector ETF rotation (Jegadeesh & Titman style)
+data:
+  tickers: [XLK, XLF, XLV, XLY, XLP, XLE, XLI, XLB, XLU]
+  start: "2003-01-01"
+  end: "2024-12-31"
+  source: yahoo
+  cache_dir: data
+
+strategy:
+  name: cross_sectional
+  lookback: 252
+  skip: 21
+  rebalance: M
+  top_n: 3
+  long_short: false      # true = long the strongest, short the weakest
+  weighting: equal
+  max_leverage: 1.0
+
+backtest:
+  cost_bps: 10
+  benchmark: SPY
+
+output_dir: reports

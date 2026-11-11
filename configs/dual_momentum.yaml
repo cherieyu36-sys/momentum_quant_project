@@ -1,0 +1,26 @@
+# Dual momentum (relative + absolute): cross-asset ETF rotation
+data:
+  tickers: [SPY, QQQ, IWM, EFA, EEM, VNQ, GLD, DBC, TLT, IEF]
+  start: "2007-01-01"
+  end: "2024-12-31"
+  source: yahoo          # yahoo | csv | synthetic
+  csv_path: null
+  cache_dir: data
+  seed: 42
+
+strategy:
+  name: dual
+  lookback: 252          # 12 months
+  skip: 21               # skip the most recent month
+  rebalance: M
+  top_n: 3
+  weighting: inverse_vol
+  vol_window: 63
+  max_leverage: 1.0
+  safe_asset: IEF        # move to intermediate Treasuries when momentum is weak
+
+backtest:
+  cost_bps: 10
+  benchmark: equal_weight   # equal_weight | a ticker (e.g. SPY) | null
+
+output_dir: reports
