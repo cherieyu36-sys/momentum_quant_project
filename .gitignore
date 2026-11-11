@@ -1,0 +1,12 @@
+data/
+reports/
+.venv/
+__pycache__/
+*.egg-info/
+.DS_Store
+data/
+reports/
+.venv/
+__pycache__/
+*.egg-info/
+.DS_Store
