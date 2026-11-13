@@ -76,6 +76,11 @@ Each run writes the following to `reports/<strategy>_<source>/`:
 ![Dual momentum](docs/dual_performance.png)
 ![Time-series momentum](docs/time_series_performance.png)
 ![Cross-sectional momentum](docs/cross_sectional_performance.png)
+**Robustness.** The default dual momentum setting (12-month lookback, top 3) cut the GFC
+max drawdown from 40.5% to 16.7% vs the equal-weight benchmark. A lookback × top-n sweep
+shows this is parameter-sensitive: only 3 of 9 settings had a smaller drawdown than the
+benchmark, and concentrated top-1 portfolios lost over 50%. Reproduce with
+`python3 -m momentum sweep --config configs/dual_momentum.yaml --lookbacks 63 126 252 --top-ns 1 2 3 --metric "Max Drawdown"`.
 
 ## Strategies
 
